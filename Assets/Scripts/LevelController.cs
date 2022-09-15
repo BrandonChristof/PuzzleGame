@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public GameObject data;
     public GameObject standard_win;
     public GameObject star_win;
     public GameObject lose;
@@ -27,6 +26,7 @@ public class LevelController : MonoBehaviour
         Down,
         Left
     }
+    public float optimal_moves;
     public int num_moves;
     public int counter = 0;
     private bool moving = false;
@@ -43,8 +43,8 @@ public class LevelController : MonoBehaviour
 
         squares = GameObject.FindGameObjectsWithTag("square");
         finish = GameObject.FindGameObjectsWithTag("finish");
-        CreateLevel(Levels.levels[data.GetComponent<LevelData>().level-1]);
-        
+        CreateLevel(Levels.levels[SceneManager.GetActiveScene().buildIndex-1]);
+        optimal_moves = Levels.levels[SceneManager.GetActiveScene().buildIndex-1][0, 0];
         GameObject[] wall_list = GameObject.FindGameObjectsWithTag("wall");
         foreach (GameObject w in wall_list) {
             Vector3 wall = new Vector3(w.transform.position.x, w.transform.position.y, 0f);
@@ -178,7 +178,7 @@ public class LevelController : MonoBehaviour
         }
         else{
             int rank = 1;
-            if (num_moves <= data.GetComponent<LevelData>().star_moves){
+            if (num_moves <= optimal_moves){
                 rank = 2;
             }
 
@@ -204,7 +204,7 @@ public class LevelController : MonoBehaviour
             Instantiate(wall, new Vector3(x, y, 0f), Quaternion.identity);
         }
 
-        for (int v = 0; v < level_data.GetLength(0); v++){
+        for (int v = 1; v < level_data.GetLength(0); v++){
             float x = level_data[v, 0];
             float y = level_data[v, 1];
             Instantiate(wall, new Vector3(x, y, 0f), Quaternion.identity);
