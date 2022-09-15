@@ -31,6 +31,7 @@ public class SetData : MonoBehaviour
             else if(rank == 1){
                 total_completed++;
             }
+            level.transform.GetChild(0).gameObject.GetComponent<Text>().text = level.GetComponent<LevelSelect>().lvl.ToString();
             level.transform.GetChild(1).gameObject.GetComponent<Image>().sprite = icon[rank];
             level.gameObject.GetComponent<Image>().sprite = button[rank];
         }

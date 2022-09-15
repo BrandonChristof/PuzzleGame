@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelData : MonoBehaviour
 {
+    
     public int level;
     public int star_moves;
     
