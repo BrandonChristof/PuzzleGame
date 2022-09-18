@@ -178,6 +178,107 @@ public class Levels : MonoBehaviour
         {0f, -2f},
     };
 
+    // 12 move puzzle
+    public static float[,] level11 = new float[,]{
+        {12f, 999f}, //Optimal solution
+        {0f, 3f},
+        {-2f, 1f},
+        {2f, 1f},
+        {4f, 0f},
+        {-3f, -1f},
+        {-2f, -1f},
+        {4f, -1f},
+    };
+
+    // 12 move puzzle
+    public static float[,] level12 = new float[,]{
+        {12f, 999f}, //Optimal solution
+        {-1f, 4f},
+        {0f, 2f},
+        {1f, 1f},
+        {-3f, 0f},
+        {1f, 0f},
+        {2f, -1f},
+        {-3f, -2f},
+        {-1f, -2f},
+        {3f, -2f},
+        {-3f, -3f},
+        {-2f, -3f},
+    };
+
+    //UNADDED
+    // 13 move puzzle
+    public static float[,] level13 = new float[,]{
+        {13f, 999f}, //Optimal solution
+        {-1f, 3f},
+        {2f, 3f},
+        {2f, 2f},
+        {-1f, 1f},
+        {0f, 0f},
+        {-3f, -1f},
+        {-2f, -1f},
+        {0f, -1f},
+        {4f, -1f},
+        {4f, -2f},
+    };
+
+    public static float[,] level14 = new float[,]{
+        {13f, 999f}, //Optimal solution
+        {0f, 4f},
+        {4f, 4f},
+        {0f, 2f},
+        {-2f, 1f},
+        {3f, 1f},
+        {-3f, -1f},
+        {1f, -1f},
+        {1f, -2f},
+    };
+
+    public static float[,] level15 = new float[,]{
+        {14f, 999f}, //Optimal solution
+        {4f, 4f},
+        {1f, 3f},
+        {-3f, 2f},
+        {0f, 1f},
+        {-2f, 0f},
+        {-1f, 0f},
+        {0f, 0f},
+        {1f, 0f},
+        {0f, -1f},
+        {3f, -2f},
+    };
+
+    public static float[,] level16 = new float[,]{
+        {14f, 999f}, //Optimal solution
+        {-1f, 4f},
+        {2f, 4f},
+        {-3f, 2f},
+        {3f, 1f},
+        {4f, 1f},
+        {-2f, 0f},
+        {-1f, 0f},
+        {-1f, -1f},
+        {1f, -1f},
+        {3f, -1f},
+        {1f, -2f},
+        {3f, -2f},
+        
+    };
+
+    /* public static float[,] level10 = new float[,]{
+        {31f, 999f}, //Optimal solution
+        {-1f, 4f},
+        {0f, 4f},
+        {1f, 4f},
+        {4f, 4f},
+        {2f, 3f},
+        {-1f, 2f},
+        {0f, 2f},
+        {1f, 2f},
+        {3f, 1f},
+        {-3f, -1f},
+    }; */
+
 
     /* public static float[,] level60 = new float[,]{
         {0f, 4f},
@@ -203,6 +304,12 @@ public class Levels : MonoBehaviour
         level7,
         level8,
         level9,
-        level10
+        level10,
+        level11,
+        level12,
+        level13,
+        level14,
+        level15,
+        level16
     };
 }
