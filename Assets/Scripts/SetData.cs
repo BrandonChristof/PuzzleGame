@@ -5,16 +5,35 @@ using UnityEngine;
 
 public class SetData : MonoBehaviour
 {
+    public GameObject scroller;
+    public static float scroll_position = 99999f;
+    //public static int GetScrollPosition() { return load_level; }
+    //public static void SetScrollPosition(int l) { load_level=l; }
 
-    public Sprite[] icon = new Sprite[3];
+
     public Sprite[] button = new Sprite[3];
+    public GameObject butt;
+    public Transform canvas;
     public Text completed_text;
     public Text star_text;
 
     void Start(){
 
+        Application.targetFrameRate = 60;
+        
         //RESET GAME
         //ResetGame();
+        int y = 0;
+        int counter = 0;
+        for (int row=0; row < 20; row++){
+            for (int col=1; col <= 3; col++){
+                GameObject lvl_butt = (GameObject)Instantiate(butt, new Vector3((col-2)*1.50f, -row*1.5f+3f, 0f), Quaternion.identity, canvas);
+                counter++;
+                lvl_butt.transform.GetChild(0).gameObject.GetComponent<Text>().text = counter.ToString();
+                lvl_butt.GetComponent<LevelSelect>().lvl = counter;
+                lvl_butt.tag = "level_button";
+            }
+        }
         
         UserData data = SaveSystem.LoadData();
         GameObject[] levels = GameObject.FindGameObjectsWithTag("level_button");
@@ -22,22 +41,28 @@ public class SetData : MonoBehaviour
         int total_completed = 0;
         int total_stars = 0;
 
+        
         foreach (GameObject level in levels) {
             int rank = data.user_data[level.GetComponent<LevelSelect>().lvl-1, 1];
             if (rank == 2){
                 total_stars++;
                 total_completed++;
+                level.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.black;
             }
             else if(rank == 1){
                 total_completed++;
+                level.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.black;
             }
             level.transform.GetChild(0).gameObject.GetComponent<Text>().text = level.GetComponent<LevelSelect>().lvl.ToString();
-            level.transform.GetChild(1).gameObject.GetComponent<Image>().sprite = icon[rank];
             level.gameObject.GetComponent<Image>().sprite = button[rank];
         }
         
         completed_text.GetComponent<Text>().text = total_completed.ToString();
         star_text.GetComponent<Text>().text = total_stars.ToString();
+
+        if (scroll_position!=99999f){
+            scroller.transform.position = new Vector3(scroller.transform.position.x, scroll_position, scroller.transform.position.z);
+        }
     }
 
     public void ResetGame(){
@@ -45,4 +70,7 @@ public class SetData : MonoBehaviour
         SaveSystem.SaveGame(reset);
     }
 
+    void Update(){
+        scroll_position = scroller.transform.position.y;
+    }
 }

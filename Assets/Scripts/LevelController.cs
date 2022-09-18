@@ -26,6 +26,7 @@ public class LevelController : MonoBehaviour
         Down,
         Left
     }
+    public int curr_level;
     public float optimal_moves;
     public int num_moves;
     public int counter = 0;
@@ -36,6 +37,10 @@ public class LevelController : MonoBehaviour
     private bool is_dragging = false;
     private Vector2 start_touch, swipe_delta;
 
+    private void Awake(){
+        curr_level = LevelSelect.GetLevel();
+        Debug.Log(curr_level);
+    }
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -43,8 +48,11 @@ public class LevelController : MonoBehaviour
 
         squares = GameObject.FindGameObjectsWithTag("square");
         finish = GameObject.FindGameObjectsWithTag("finish");
-        CreateLevel(Levels.levels[SceneManager.GetActiveScene().buildIndex-1]);
-        optimal_moves = Levels.levels[SceneManager.GetActiveScene().buildIndex-1][0, 0];
+        //CreateLevel(Levels.levels[SceneManager.GetActiveScene().buildIndex-1]);
+        //optimal_moves = Levels.levels[SceneManager.GetActiveScene().buildIndex-1][0, 0];
+        CreateLevel(Levels.levels[curr_level-1]);
+        optimal_moves = Levels.levels[curr_level-1][0, 0];
+
         GameObject[] wall_list = GameObject.FindGameObjectsWithTag("wall");
         foreach (GameObject w in wall_list) {
             Vector3 wall = new Vector3(w.transform.position.x, w.transform.position.y, 0f);
@@ -52,12 +60,15 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
+    void Update(){
         if(!moving){
             dir = GetSwipeValue();
         }
-        else{
+    }
+
+    void FixedUpdate()
+    {
+        if(moving){
             MoveSquares();
         }
     }
@@ -182,7 +193,8 @@ public class LevelController : MonoBehaviour
                 rank = 2;
             }
 
-            SaveSystem.SetData(SceneManager.GetActiveScene().buildIndex-1, num_moves, rank);
+            //SaveSystem.SetData(SceneManager.GetActiveScene().buildIndex-1, num_moves, rank);
+            SaveSystem.SetData(curr_level-1, num_moves, rank);
 
             if (rank == 1){
                 standard_win.SetActive(true);

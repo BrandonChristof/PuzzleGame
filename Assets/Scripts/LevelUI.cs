@@ -13,16 +13,20 @@ public class LevelUI : MonoBehaviour
     public Text num_moves_text;
     public LevelController level_controller;
 
+    public int curr_level;
+
+    private void Awake(){
+        curr_level = LevelSelect.GetLevel();
+        Debug.Log(curr_level);
+    }
+
     public void Start(){
         UserData data = SaveSystem.LoadData();
-        //int level = level_controller.data.GetComponent<LevelData>().level;
-        int level = SceneManager.GetActiveScene().buildIndex;
+        //int level = SceneManager.GetActiveScene().buildIndex;
 
-        title.GetComponent<Text>().text = "Level " + level.ToString();
-        //optimal_value = Levels.levels[level-1][0, 0].ToString();
-        optimal_value_text.GetComponent<Text>().text = Levels.levels[level-1][0, 0].ToString();
-        //optimal_value.GetComponent<Text>().text = level_controller.data.GetComponent<LevelData>().star_moves.ToString();
-        best_value.GetComponent<Text>().text = data.user_data[level-1, 0].ToString();
+        title.GetComponent<Text>().text = "Level " + curr_level.ToString();
+        optimal_value_text.GetComponent<Text>().text = Levels.levels[curr_level-1][0, 0].ToString();
+        best_value.GetComponent<Text>().text = data.user_data[curr_level-1, 0].ToString();
     }
     
     public void MainMenu(){
@@ -30,11 +34,12 @@ public class LevelUI : MonoBehaviour
     }
 
     public void ResetLevel(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void NextLevel(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        LevelSelect.SetLevel(curr_level+1);
+        SceneManager.LoadScene(1);
     }
 
     public void Update(){

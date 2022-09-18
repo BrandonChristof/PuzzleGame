@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class LevelSelect : MonoBehaviour
 {
-    
 
+    public static int load_level;
     public int lvl;
+
+    public static int GetLevel() { return load_level; }
+    public static void SetLevel(int l) { load_level=l; }
     
     public void StartPuzzle(){
-        SceneManager.LoadScene(lvl);
+        load_level = lvl;
+        LevelSelect.SetLevel(lvl);
+        SceneManager.LoadScene(1);
     }
 }
