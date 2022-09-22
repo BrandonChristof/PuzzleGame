@@ -30,16 +30,16 @@ public class LevelUI : MonoBehaviour
     }
     
     public void MainMenu(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ResetLevel(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void NextLevel(){
         LevelSelect.SetLevel(curr_level+1);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void Update(){

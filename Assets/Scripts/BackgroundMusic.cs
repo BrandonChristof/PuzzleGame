@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
-    public AudioSource audio_source;
+    public static bool first_startup = true;
+    public static AudioSource audio_source;
 
     private void Awake()
      {
          DontDestroyOnLoad(transform.gameObject);
-         audio_source = GetComponent<AudioSource>();
-         audio_source.volume = 0.15f;
+         //audio_source = GetComponent<AudioSource>();
+        
+        if (first_startup){
+            audio_source = GetComponent<AudioSource>();
+            audio_source.volume = 0.1f;
+            PlayMusic();
+            first_startup = false;
+        } 
      }
  
      public void PlayMusic()
@@ -29,7 +36,7 @@ public class BackgroundMusic : MonoBehaviour
             audio_source.volume = 0f;
         }
         else{
-            audio_source.volume = 0.15f;
+            audio_source.volume = 0.1f;
         }
      }
 }

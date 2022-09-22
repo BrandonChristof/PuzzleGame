@@ -15,6 +15,6 @@ public class LevelSelect : MonoBehaviour
     public void StartPuzzle(){
         load_level = lvl;
         LevelSelect.SetLevel(lvl);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
