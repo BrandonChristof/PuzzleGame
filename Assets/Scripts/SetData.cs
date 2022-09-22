@@ -25,15 +25,41 @@ public class SetData : MonoBehaviour
         //ResetGame();
         int y = 0;
         int counter = 0;
+        float w = Screen.width;
+        float h = Screen.height;
+        float ratio = (w/h);
+        Debug.Log(ratio);
+        if (ratio > 0.7f){
+            ratio = 1.75f;
+        }
+        else if (ratio > 0.5f){
+            ratio = 1.5f;
+        }
+        else{
+            ratio = 1.25f;
+        }
+
+        
+        GameObject temp_button = (GameObject)Instantiate(butt, new Vector3(0, -19*ratio+3f, 0f), Quaternion.identity, canvas);
+        RectTransform button_rt = temp_button.GetComponent (typeof (RectTransform)) as RectTransform;
+        RectTransform rt = scroller.GetComponent (typeof (RectTransform)) as RectTransform;
+        rt.sizeDelta = new Vector2(950, -button_rt.localPosition.y+200f);
+        Destroy(temp_button);
+        
         for (int row=0; row < 20; row++){
             for (int col=1; col <= 3; col++){
-                GameObject lvl_butt = (GameObject)Instantiate(butt, new Vector3((col-2)*1.50f, -row*1.5f+3f, 0f), Quaternion.identity, canvas);
+                //GameObject lvl_butt = (GameObject)Instantiate(butt, new Vector3((col-2)*1.35f, -row*1.5f+3.35f, 0f), Quaternion.identity, canvas);
+                GameObject lvl_butt = (GameObject)Instantiate(butt, new Vector3((col-2)*ratio, -row*ratio+3f, 0f), Quaternion.identity, canvas);
+                //GameObject lvl_butt = (GameObject)Instantiate(butt, new Vector3((col-2), -row+3.35f, 0f), Quaternion.identity, canvas);
                 counter++;
                 lvl_butt.transform.GetChild(0).gameObject.GetComponent<Text>().text = counter.ToString();
                 lvl_butt.GetComponent<LevelSelect>().lvl = counter;
                 lvl_butt.tag = "level_button";
             }
         }
+
+        
+        
         
         UserData data = SaveSystem.LoadData();
         GameObject[] levels = GameObject.FindGameObjectsWithTag("level_button");

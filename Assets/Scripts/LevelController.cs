@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+
     public GameObject standard_win;
     public GameObject star_win;
     public GameObject lose;
@@ -13,7 +14,6 @@ public class LevelController : MonoBehaviour
     public AudioSource audio_source;
     public AudioClip[] notes = new AudioClip[4];
 
-    
     private GameObject[] squares;
     public GameObject[] finish;
     public GameObject wall;
@@ -39,7 +39,6 @@ public class LevelController : MonoBehaviour
 
     private void Awake(){
         curr_level = LevelSelect.GetLevel();
-        Debug.Log(curr_level);
     }
     void Start()
     {
@@ -133,6 +132,7 @@ public class LevelController : MonoBehaviour
         
         moving = false;
         List<Vector3> square_positions = new List<Vector3>();
+        
         
         foreach (GameObject s in squares) {
             if (s==null){ continue; }
