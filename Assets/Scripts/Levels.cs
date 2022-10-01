@@ -12,9 +12,7 @@ public class Levels : MonoBehaviour
             if (!_Instance)
             {
                 _Instance = new GameObject().AddComponent<Levels>();
-                // name it for easy recognition
                 _Instance.name = _Instance.GetType().ToString();
-                // mark root as DontDestroyOnLoad();
                 DontDestroyOnLoad(_Instance.gameObject);
             }
             return _Instance;
