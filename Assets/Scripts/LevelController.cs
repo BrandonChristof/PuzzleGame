@@ -43,12 +43,26 @@ public class LevelController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+
+        float wid = Screen.width;
+        float het = Screen.height;
+        float ratio = (wid/het);
+        Debug.Log(ratio);
+        if (ratio > 0.7f){
+            ratio = 8f;
+        }
+        else if (ratio > 0.5f){
+            ratio = 10f;
+        }
+        else{
+            ratio = 12f;
+        }
+
+        Camera.main.orthographicSize = ratio;
         
 
         squares = GameObject.FindGameObjectsWithTag("square");
         finish = GameObject.FindGameObjectsWithTag("finish");
-        //CreateLevel(Levels.levels[SceneManager.GetActiveScene().buildIndex-1]);
-        //optimal_moves = Levels.levels[SceneManager.GetActiveScene().buildIndex-1][0, 0];
         CreateLevel(Levels.levels[curr_level-1]);
         optimal_moves = Levels.levels[curr_level-1][0, 0];
 
@@ -160,7 +174,9 @@ public class LevelController : MonoBehaviour
             }
 
             if (finish[0].transform.position == s.transform.position){
-                audio_source.PlayOneShot(notes[counter], 0.33f);
+                if (BackgroundMusic.sound_effects){
+                    audio_source.PlayOneShot(notes[counter], 0.33f);
+                }                
                 counter++;
                 Destroy(s);
             }
