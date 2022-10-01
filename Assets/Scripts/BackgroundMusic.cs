@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundMusic : MonoBehaviour
 {
     public static bool first_startup = true;
+    public static bool sound_effects = true;
     public static AudioSource audio_source;
 
     private void Awake()
@@ -29,14 +30,17 @@ public class BackgroundMusic : MonoBehaviour
      public void StopMusic()
      {
          audio_source.Stop();
+         sound_effects = false;
      }
 
      public void MusicOnOff(){
         if (audio_source.volume != 0f){
             audio_source.volume = 0f;
+            sound_effects = false;
         }
         else{
             audio_source.volume = 0.1f;
+            sound_effects = true;
         }
      }
 }
