@@ -8,7 +8,12 @@ public class PercentScript : MonoBehaviour
     public Text percent_text;
 
     void Start(){
+
         UserData data = SaveSystem.LoadData();
+        if (data == null){
+            data = new UserData();
+        }
+        SaveSystem.SaveGame(data);
         int total = 0;
         for (int i = 0; i < 60; i++) {
             int rank = data.user_data[i, 1];

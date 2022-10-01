@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour
 
     public AudioSource audio_source;
     public AudioClip[] notes = new AudioClip[4];
+    public float note_volume = 0.2f;
 
     private GameObject[] squares;
     public GameObject[] finish;
@@ -175,7 +176,7 @@ public class LevelController : MonoBehaviour
 
             if (finish[0].transform.position == s.transform.position){
                 if (BackgroundMusic.sound_effects){
-                    audio_source.PlayOneShot(notes[counter], 0.33f);
+                    audio_source.PlayOneShot(notes[counter], note_volume);
                 }                
                 counter++;
                 Destroy(s);
