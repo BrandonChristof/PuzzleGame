@@ -205,13 +205,18 @@ public class LevelController : MonoBehaviour
             this.enabled = false;
         }
         else{
+            
+            UserData data = SaveSystem.LoadData();
+            int best = data.user_data[curr_level-1, 0];
+
             int rank = 1;
             if (num_moves <= optimal_moves){
                 rank = 2;
             }
 
-            //SaveSystem.SetData(SceneManager.GetActiveScene().buildIndex-1, num_moves, rank);
-            SaveSystem.SetData(curr_level-1, num_moves, rank);
+            if (best == 0 || num_moves < best){
+                SaveSystem.SetData(curr_level-1, num_moves, rank);
+            }
 
             if (rank == 1){
                 standard_win.SetActive(true);
