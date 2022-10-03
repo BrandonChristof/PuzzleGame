@@ -6,6 +6,8 @@ using UnityEngine;
 public class LevelSelect : MonoBehaviour
 {
 
+    public static int ad_freq = 10;
+    public static int ad_tracker = ad_freq;
     public static int load_level;
     public int lvl;
 

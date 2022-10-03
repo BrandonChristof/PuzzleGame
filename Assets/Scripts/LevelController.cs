@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-
     public GameObject standard_win;
     public GameObject star_win;
     public GameObject lose;
@@ -205,7 +204,6 @@ public class LevelController : MonoBehaviour
             this.enabled = false;
         }
         else{
-            
             UserData data = SaveSystem.LoadData();
             int best = data.user_data[curr_level-1, 0];
 

@@ -43,7 +43,7 @@ public class SetData : MonoBehaviour
         GameObject temp_button = (GameObject)Instantiate(butt, new Vector3(0, -19*ratio+offset, 0f), Quaternion.identity, canvas);
         RectTransform button_rt = temp_button.GetComponent (typeof (RectTransform)) as RectTransform;
         RectTransform rt = scroller.GetComponent (typeof (RectTransform)) as RectTransform;
-        rt.sizeDelta = new Vector2(950, -button_rt.localPosition.y+200f);
+        rt.sizeDelta = new Vector2(950, -button_rt.localPosition.y+300f);
         Destroy(temp_button);
         
         for (int row=0; row < 20; row++){
