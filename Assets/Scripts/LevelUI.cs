@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
@@ -20,7 +18,6 @@ public class LevelUI : MonoBehaviour
 
     private void Awake(){
         curr_level = LevelSelect.GetLevel();
-        Debug.Log(curr_level);
     }
 
     public void Start(){
