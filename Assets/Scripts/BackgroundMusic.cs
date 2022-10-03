@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +7,6 @@ public class BackgroundMusic : MonoBehaviour
     public static bool sound_effects = true;
     public static AudioSource audio_source;
     public GameObject sound_button;
-    public Color on_color = new Color(0.17f, 0.82f, 0.14f);
-    public Color on_text_color = new Color(0f, 0.35f, 0.03f, 0.91f);
-    public Color off_color = new Color(0.82f, 0.17f, 0.14f, 0.91f);
-    public Color off_text_color = new Color(0.35f, 0f, 0.03f, 0.91f);
 
     private void Awake()
      {

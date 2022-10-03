@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using GoogleMobileAds.Api;
@@ -29,11 +27,8 @@ public class Interstitial : MonoBehaviour
             string adUnitId = "unexpected_platform";
         #endif
 
-        // Initialize an InterstitialAd.
         this.interstitial = new InterstitialAd(adUnitId);
-        // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
         this.interstitial.LoadAd(request);
     }
 

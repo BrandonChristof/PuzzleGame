@@ -47,7 +47,6 @@ public class LevelController : MonoBehaviour
         float wid = Screen.width;
         float het = Screen.height;
         float ratio = (wid/het);
-        Debug.Log(ratio);
         if (ratio > 0.7f){
             ratio = 8f;
         }

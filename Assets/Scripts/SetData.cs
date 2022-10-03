@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -7,9 +5,6 @@ public class SetData : MonoBehaviour
 {
     public GameObject scroller;
     public static float scroll_position = 99999f;
-    //public static int GetScrollPosition() { return load_level; }
-    //public static void SetScrollPosition(int l) { load_level=l; }
-
 
     public Sprite[] button = new Sprite[3];
     public GameObject butt;
@@ -28,7 +23,6 @@ public class SetData : MonoBehaviour
         float w = Screen.width;
         float h = Screen.height;
         float ratio = (w/h);
-        Debug.Log(ratio);
         if (ratio > 0.7f){
             ratio = 1.75f;
         }
@@ -55,9 +49,6 @@ public class SetData : MonoBehaviour
                 lvl_butt.tag = "level_button";
             }
         }
-
-        
-        
         
         UserData data = SaveSystem.LoadData();
         GameObject[] levels = GameObject.FindGameObjectsWithTag("level_button");
