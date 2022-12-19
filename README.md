@@ -1,7 +1,7 @@
 # PuzzleGame
 A simple puzzle game where the goal is to manipulate 4 squares to the exit by swiping them up/down/left/right in as few moves as possible. The catch is that they must all exit at the same time.
 
-60 puzzles are included with various difficulties ranging from 5 moves to 31 moves.
+60 puzzles are included with various difficulties ranging from 3 moves to 31 moves.
 
 ## Example of a puzzle:
 This is an example of something you might see when you first start a puzzle. When you swipe up/down/left/right, all 4 squares will slide in that direction until they hit a wall (black square) or the exit (green arrow).
