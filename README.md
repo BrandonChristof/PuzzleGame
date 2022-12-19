@@ -3,6 +3,7 @@ A simple puzzle game where the goal is to manipulate 4 squares to the exit by sw
 
 ## Example of a puzzle:
 This is an example of something you might see when you first start a puzzle. When you swipe up/down/left/right, all 4 squares will slide in that direction until they hit a wall (black square) or the exit (green arrow).
+
 ![Screenshot 2022-12-18 203654](https://user-images.githubusercontent.com/40243966/208331842-025053a6-f5a6-400c-a831-bd5ba0431aa1.png)
 
 
